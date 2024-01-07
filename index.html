@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Anime List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            color: #333;
+            background: #222;
+        }
+
+     .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-spinner {
+    border: 8px solid red;
+    border-top: 8px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+     img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+     }
+
+     li>span {
+       color: white;
+       position: relative;
+       left: 5px;
+     }
+
+        h1 {
+            color: white;
+        }
+
+      .total {
+        color: white;
+      }
+
+        ol {
+            padding: 0;
+        }
+
+        .anime-list {
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            border: 2px solid darkred;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            align-items: center;
+            background: black;
+        }
+
+        .rating {
+            font-weight: bold;
+            font-size: 15px;
+            color: #008000; /* Green color for ratings */
+        }
+
+        .status {
+            font-style: italic;
+            color: #555;
+        }
+
+        .completed {
+            color: #008000; /* Green color for completed anime */
+        }
+
+        .not-completed {
+            color: #ff0000; /* Red color for not completed anime */
+        }
+
+        .copyright {
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: white;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+        }
+        
+        .banjarasu {
+          color: #0366d6;
+        }
+    </style>
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+</div>
+    <h1>D4x Anime List</h1>
+    <ol class="anime-list">
+          <div class="total">
+        Total Anime: <span id="totalAnime">0</span>
+    </div>
+        <li>
+          <img src="https://i.pinimg.com/736x/f6/68/a3/f668a3141dc9ccd4afb7e4545ca1cf6b.jpg" alt="Hunter X Hunter" />
+            <span>Hunter X Hunter</span>
+            <span class="rating">9/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://i.pinimg.com/736x/81/c7/9c/81c79cb8cfcb320fb7890403fc9bc81d.jpg" alt="Kimetsu No Yaiba" />
+            <span>Kimetsu No Yaiba</span>
+            <span class="rating">9.5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjP0GCaQ5dUw_HpLcdeNRUATrz6-umePBOCA&usqp=CAU" alt="Jujutsu Kaisen" />
+            <span>Jujutsu Kaisen</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1806/126216.jpg" alt="Chainsaw Man" />
+            <span>Chainsaw Man</span>
+            <span class="rating">8/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://i.pinimg.com/736x/10/8e/3b/108e3b1df00743bb3ce908a48c8e7e47.jpg" alt="One Piece" />
+            <span>One Piece</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+        </li>
+        <li>
+          <img src="https://i.pinimg.com/236x/e0/53/4b/e0534bd8162fbe9c4ae2ccb9310c26f2.jpg" alt="Majo No Tabitabi" />
+            <span>Majo No Tabitabi</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1506/138529.jpg" alt="Seiken Gakuin No Makentsukai" />
+            <span>Seiken Gakuin No Makentsukai</span>
+            <span class="rating">8/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1819/97947.jpg" alt="Gotoubun No Hanayome" />
+            <span>Gotoubun No Hanayome</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1763/140359.jpg" alt="Ragna Crimson" />
+            <span>Ragna Crimson</span>
+            <span class="rating">7/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1951/138462.jpg" alt="Boushoku No Berserk" />
+            <span>Boushoku No Berserk</span>
+            <span class="rating">9/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+           <img src="https://cdn.myanimelist.net/images/anime/1622/139331.jpg" alt="Kage No Jitsuryokusha ni Naritakute" />
+            <span>Shadow Garden</span>
+            <span class="rating">9,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1136/138410.jpg" alt="Undead Unluck" />
+            <span>Undead Unluck</span>
+            <span class="rating">6,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1848/140019.jpg" alt="Kimizero" />
+            <span>Kimizero</span>
+            <span class="rating">9/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1720/139131.jpg" alt="Ikenaikyo" />
+            <span>Ikenaikyo</span>
+            <span class="rating">8,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1610/138189.jpg" alt="Hametsu No Oukoku" />
+            <span>Hametsu No Oukoku</span>
+            <span class="rating">8/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1032/137893.jpg" alt="Hikikomari Kyuuketsuki No Monmon" />
+            <span>Hikikomari Kyuuketsuki No Monmon</span>
+            <span class="rating">10/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1160/138465.jpg" alt="Bokura No Ameiro Protocol" />
+            <span>Bokura No Ameiro Protocol</span>
+            <span class="rating">6/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1500/139931.jpg" alt="Shangri-La Frontier" />
+            <span>Shangri-La Frontier</span>
+            <span class="rating">8,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1126/108573.jpg" alt="Maou Gakuin No Futekigousha" />
+            <span>Maou Gakuin No Futekigousha</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1020/139134.jpg" alt="Hoshikuzu Telepath" />
+            <span>Hoshikuzu Telepath</span>
+            <span class="rating">6,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1812/136764.jpg" alt="Kimi No Koto Ga Daidaidaidaidaisuki Na 100-nin No Kanojo" />
+            <span>The 100 Girlfriend</span>
+            <span class="rating">9,9/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1628/137847.jpg" alt="Tearmoon Teikoku Monogatari" />
+            <span>Tearmoon Teikoku Monogatari</span>
+            <span class="rating"></span>
+            <span class="status not-completed">❌</span>
+            <li>
+              <img src="https://i.ibb.co/T1P7Tsx/445b2f68afc1376711752740edee289d.jpg" alt="Sokushi Cheat Ga Saikyou Sugite" />
+            <span>Sokushi Cheat Ga Saikyou Sugite</span>
+            <span class="rating">10/10</span>
+            <span class="status completed">✅</span>
+        </li>
+        <li>
+          <img src="https://cdn.myanimelist.net/images/anime/1519/138908.jpg" alt="Mato Seihei No Slave" />
+            <span>Mato Seihei No Slave</span>
+            <span class="rating">9,5/10</span>
+            <span class="status completed">✅</span>
+        </li>
+                <li>
+                  <img src="https://cdn.myanimelist.net/images/anime/1170/138393.jpg" alt="Solo Leveling" />
+            <span>Solo Leveling</span>
+            <span class="rating">9/10</span>
+            <span class="status completed">✅</span>
+        </li>
+    </ol>
+    <div class="copyright">
+        &copy; 2024 <span class="banjarasu">D4x Anime List. </span>All rights reserved.
+    </div>
+    <script type="text/javascript" charset="utf-8">
+    
+    document.onreadystatechange = function () {
+    var loadingOverlay = document.getElementById('loadingOverlay');
+    
+    if (document.readyState == 'complete') {
+        loadingOverlay.style.visibility = 'hidden';
+        loadingOverlay.style.opacity = 0;
+    } else {
+        loadingOverlay.style.visibility = 'visible';
+        loadingOverlay.style.opacity = 1;
+    }
+};
+    
+      // JavaScript untuk menghitung total anime
+        document.addEventListener("DOMContentLoaded", function () {
+            updateTotalAnime();
+        });
+
+        function updateTotalAnime() {
+            var totalAnime = document.querySelectorAll('.anime-list li').length;
+            document.getElementById('totalAnime').textContent = totalAnime;
+        }
+    </script>
+</body>
+</html>
