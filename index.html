@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="shortcut icon" href="https://i.ibb.co/5K0hQ70/031d3e56e4cc4986221ee97450d6bb4c.jpg"/>
     <title>D4x AnimeList</title>
     <style>
@@ -11,6 +12,59 @@
             padding: 20px;
             color: #333;
             background: #222;
+        }
+
+ .top-nav {
+            background-color: white;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab {
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center; /* Menyamakan ikon dan teks secara vertikal */
+        }
+
+        .icon-launch i {
+            font-size: 24px; /* Mengganti ukuran ikon */
+            margin-right: 12px; /* Menambahkan jarak antara ikon dan teks */
+        }
+
+        .icon-mail i {
+            font-size: 24px; /* Mengganti ukuran ikon */
+            margin-right: 16px; /* Menambahkan jarak antara ikon dan teks */
+        }
+
+        .tab:hover {
+            background-color: black;
+        }
+
+        /* Media query untuk responsivitas */
+        @media only screen and (max-width: 600px) {
+            .icon-launch i {
+                font-size: 20px; /* Mengganti ukuran ikon pada breakpoint 600px */
+            }
+
+            .icon-mail i {
+                font-size: 20px; /* Mengganti ukuran ikon pada breakpoint 600px */
+            }
+            a {
+              text-decoration: none;
+              color: darkred;
+            }
+            
+            a:hover {
+              color: tomato;
+            }
         }
 
      .loading-overlay {
@@ -131,9 +185,13 @@
 </div>
     <h1>D4x Anime List</h1>
     <p class="txt">Hai bro! ini adalah web list anime yang <span style="color: crimson;">D4x</span> tonton</p>
+<div class="top-nav">
+    <a href="https://d4xabout.netlify.app/" class="tab icon-launch"><i class="material-icons">launch</i> About Web</a>
+    <a href="dannyudaa@gmail.com" class="tab icon-mail"><i class="material-icons">mail</i> Contact Us</a>
+</div>
     <ol class="anime-list">
           <div class="total">
-       / Total Anime: <span id="totalAnime">0</span>
+       Total Anime: <span id="totalAnime">0</span>
     </div>
         <li>
           <img src="https://i.pinimg.com/736x/f6/68/a3/f668a3141dc9ccd4afb7e4545ca1cf6b.jpg" alt="Hunter X Hunter" />
